@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OSM QA tiles</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.mapbox.com/mapbox.js/v2.2.1/mapbox.js'></script>
+    <link href='https://api.mapbox.com/mapbox.js/v2.2.1/mapbox.css' rel='stylesheet' />
+    <style>
+      body { margin:0; padding:0; }
+      #map { position:absolute; top:0; bottom:0; width:100%; }
+    </style>
+
+    <link href='https://www.mapbox.com/base/latest/base.css' rel='stylesheet' />
+    <style type="text/css">
+        #copy {
+            z-index: 500;
+            height: 100%;
+            width: 40%;
+            left: 0;
+            position: absolute;
+            border-right: 1px
+            solid rgba(0,0,0,0.2);
+            background-color: rgba(255,255,255,0.8);
+        }
+
+        #copy h1 {
+            color: rgba(0,0,0,0.75);
+        }
+
+        #download {
+            position: absolute;
+            right: 20%;
+            top: 50%;
+        }
+
+        .button {
+            padding: 40px;
+            font-size: 20px;
+        }
+
+        #thelist {
+            margin-left: 40px;
+            list-style-type: square;
+            list-style-position: outside;
+            list-style-image: none;
+        }
+    </style>
+</head>
+<body>
+    <div id='map'></div>
+    <a id='download' href='#' class='button'>DOWNLOAD (xx GB)</a>
+    <div id='copy' class='pad4'>
+        <h1 class='fancy center space-top4 space-bottom4'>OSM QA tiles</h1>
+        <div class='prose-big'>
+            <p>OSM QA tiles are a vector tile set created to be used for data analysis of OpenStreetMap with <a href="http://github.com/mapbox/tile-reduce">Tile Reduce</a>.</p>
+            <p>Unlike vector tiles used for displaying stylized maps, OSM QA tiles include:</p>
+            <ul id='thelist' class='space-bottom'>
+                <li>unsimplified geometries</li>
+                <li>all OpenStreetMap tags</li>
+                <li>additional properties like the changeset, time, and the user that edited a feature</li>
+            </ul>
+            <p>Mapbox uses these vector tiles to do analysis of OpenStreetMap; conflating with other large datasets like TIGER from the US Census, checking for broken features, detecting connectivity issues in the road network, and detecting vandalism.</p>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+    L.mapbox.accessToken = 'pk.eyJ1IjoiYWFyb25saWRtYW4iLCJhIjoiNTVucTd0TSJ9.wVh5WkYXWJSBgwnScLupiQ';
+
+    var map = L.mapbox.map('map', 'aaronlidman.b02452c3', {
+        zoomControl: false
+    }).setView([37.772292151125505, -122.40674436092377], 17);
+</script>
+</html>
