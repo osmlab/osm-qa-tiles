@@ -13,27 +13,25 @@
     <link href='https://www.mapbox.com/base/latest/base.css' rel='stylesheet' />
     <style type="text/css">
         #copy {
-            z-index: 500;
+            pointer-events: auto;
+            overflow-y: scroll;
             height: 100%;
-            width: 40%;
-            left: 0;
-            position: absolute;
             border-right: 1px
             solid rgba(0,0,0,0.2);
             background-color: rgba(255,255,255,0.8);
+        }
+
+        #download {
+            height: 100%;
         }
 
         #copy h1 {
             color: rgba(0,0,0,0.75);
         }
 
-        #download {
-            position: absolute;
-            right: 22.5%;
-            top: 45%;
-        }
-
         .button {
+            top: 40%;
+            pointer-events: auto;
             padding: 40px;
             font-size: 20px;
         }
@@ -44,24 +42,38 @@
             list-style-position: outside;
             list-style-image: none;
         }
+
+        #holder {
+            pointer-events: none;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
     </style>
 </head>
 <body>
     <div id='map'></div>
-    <a id='download' href='https://s3.amazonaws.com/mapbox/osm-qa-tiles/latest.planet.mbtiles' class='button'>DOWNLOAD (48 GB)</a>
-    <div id='copy' class='pad4'>
-        <h1 class='fancy center space-top4 space-bottom4'>OSM QA tiles</h1>
-        <div class='prose-big'>
-            <p>OSM QA tiles are a vector tile set created to be used for data analysis of OpenStreetMap with <a href="http://github.com/mapbox/tile-reduce">Tile Reduce</a>.</p>
-            <p>Unlike vector tiles used for displaying stylized maps, OSM QA tiles include:</p>
-            <ul id='thelist' class='space-bottom'>
-                <li>unsimplified geometries</li>
-                <li>all OpenStreetMap tags</li>
-                <li>additional properties like the changeset, time, and the user that edited a feature</li>
-            </ul>
-            <p>Mapbox uses these vector tiles to do analysis of OpenStreetMap; conflating with other large datasets like TIGER from the US Census, checking for broken features, detecting connectivity issues in the road network, and detecting vandalism.</p>
+
+    <div id='holder' class='unlimiter'>
+        <div id='copy' class='col5 pad4'>
+            <h1 class='fancy center space-top4 space-bottom4'>OSM QA tiles</h1>
+            <div class='prose-big'>
+                <p>OSM QA tiles are a vector tile set created to be used for data analysis of OpenStreetMap with <a href="http://github.com/mapbox/tile-reduce">Tile Reduce</a>.</p>
+                <p>Unlike vector tiles used for displaying stylized maps, OSM QA tiles include:</p>
+                <ul id='thelist' class='space-bottom'>
+                    <li>unsimplified geometries</li>
+                    <li>all OpenStreetMap tags</li>
+                    <li>additional properties like the changeset, time, and the user that edited a feature</li>
+                </ul>
+                <p>Mapbox uses these vector tiles to do analysis of OpenStreetMap; conflating with other large datasets like TIGER from the US Census, checking for broken features, detecting connectivity issues in the road network, and detecting vandalism.</p>
+            </div>
+        </div>
+        <div id='download' class='col7 center'>
+            <a href='https://s3.amazonaws.com/mapbox/osm-qa-tiles/latest.planet.mbtiles' class='button'>DOWNLOAD (48 GB)</a>
         </div>
     </div>
+
 </body>
 <script type="text/javascript">
     L.mapbox.accessToken = 'pk.eyJ1IjoiYWFyb25saWRtYW4iLCJhIjoiNTVucTd0TSJ9.wVh5WkYXWJSBgwnScLupiQ';
