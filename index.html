@@ -32,9 +32,17 @@
 
         .button {
             pointer-events: auto;
-            padding: 40px;
-            font-size: 20px;
+            padding: 30px;
+            border-radius: 5px;
         }
+        .button .label {
+          font-size: 20px;
+        }
+        .button .description {
+          font-family: 'Open Sans', sans-serif;
+          margin-top: 5px;
+          margin-bottom: -10px;
+          }
 
         #thelist {
             margin-left: 40px;
@@ -64,7 +72,7 @@
         <div id='copy' class='col5 pad4'>
             <h1 class='fancy center space-top4 space-bottom4'>OSM QA tiles</h1>
             <div class='prose-big'>
-                <p>OSM QA tiles are a vector tile set designed for data analysis of <a href="http://openstreetmap.org/">OpenStreetMap</a> with <a href="http://github.com/mapbox/tile-reduce">TileReduce</a>.</p>
+                <p><a href="http://openstreetmap.org/">OpenStreetMap</a> data in <a href="https://github.com/mapbox/vector-tile-spec">vector tile format</a> for data analysis.</p>
                 <p>OSM QA tiles contain the full spectrum of OpenStreetMap data, tile by tile:</p>
                 <ul id='thelist' class='space-bottom'>
                     <li>unsimplified geometries</li>
@@ -80,7 +88,9 @@
             </div>
         </div>
         <div id='download' class='col7 center'>
-            <a href='https://s3.amazonaws.com/mapbox/osm-qa-tiles/latest.planet.mbtiles.gz' class='button fill-dark'>DOWNLOAD PLANET (22 GB)</a>
+            <a href='https://s3.amazonaws.com/mapbox/osm-qa-tiles/latest.planet.mbtiles.gz' class='button fill-dark'>
+            <div class="label">DOWNLOAD PLANET (22 GB)</div>
+            <div class="description">updated daily</div></a>
             <h2 id='country'><a href="/osm-qa-tiles/country.html">or country extracts</a></h2>
         </div>
     </div>
