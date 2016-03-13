@@ -42,7 +42,7 @@
           margin-bottom: -10px;
           }
 
-        #thelist {
+        .thelist {
             margin-left: 40px;
             list-style-type: square;
             list-style-position: outside;
@@ -67,25 +67,40 @@
     <div id='map'></div>
 
     <div id='holder' class='unlimiter'>
-        <div id='copy' class='col5 pad4'>
-            <h1 class='fancy center space-top4 space-bottom4'>OSM QA tiles</h1>
-            <div class='prose-big'>
-                <p><a href="http://openstreetmap.org/">OpenStreetMap</a> data as
-                <a href="https://www.mapbox.com/developers/vector-tiles/">Mapbox Vector Tiles</a> for data analysis.</p>
-                <p>OSM QA tiles contain the full spectrum of OpenStreetMap data, tile by tile:</p>
-                <ul id='thelist' class='space-bottom'>
-                    <li>unsimplified geometries</li>
-                    <li>all OpenStreetMap tags</li>
-                    <li>additional properties like changeset, time, and user ids</li>
-                </ul>
-                <p>In combination with a tile-based processing framework
-                like <a href="https://github.com/mapbox/tile-reduce">TileReduce</a>, OSM QA tiles allow for fast and parallelized analysis.</p>
-                <p>You can use OSM QA tiles to conflate OpenStreetMap with other datasets, detect bugs like connectivity issues and monitor for vandalism.</p>
-                <p>OSM QA tiles ship in <a href="https://github.com/mapbox/mbtiles-spec">MBTiles format.</a></p>
-                <p><a href="http://www.openstreetmap.org/copyright">© OpenStreetMap contributors</a>, licensed
+        <div id='copy' class='col5'>
+            <div class='pad4'>
+                <h1 class='fancy center space-top2 space-bottom0'>OSM QA tiles</h1>
+                <p class='prose space-bottom4'><a href="http://openstreetmap.org/">OpenStreetMap</a> data as
+                <a href="https://www.mapbox.com/developers/vector-tiles/">Mapbox Vector Tiles</a> in
+                an <a href="https://github.com/mapbox/mbtiles-spec">MBTiles file</a> for data analysis.</p>
+                <div class='prose-big'>
+                    <h4>Includes:</h4>
+                    <ul class='thelist space-bottom'>
+                        <li>unsimplified geometries</li>
+                        <li>all OpenStreetMap tags</li>
+                        <li>additional properties like changeset, time, and user ids</li>
+                    </ul>
+                    <p>In combination with a tile-based processing framework
+                    like <a href="https://github.com/mapbox/tile-reduce">TileReduce</a>, OSM QA tiles allow for fast and parallelized analysis.
+                    You can use OSM QA tiles to conflate OpenStreetMap with other datasets, detect bugs like connectivity issues and monitor for vandalism.</p>
+                    <h4>Does not include:</h4>
+                    <ul class='thelist space-bottom'>
+                        <li>Relations</li>
+                        <li>Untagged nodes that aren't part of a way</li>
+                    </ul>
+                    <p>Closed ways are represented as both LineString &amp;
+                    Polygon geometries because OSM QA Tiles do not yet
+                    make an up-front decision about whether a geometry
+                    is an area or a line.</p>
+                </div>
+            </div>
+
+            <div class='pad4 fill-white'>
+                <a href='https://mapbox.com/' class='mb-logo'>Mapbox</a>
+                <p class='prose'>This service is provided by <a href='https://mapbox.com/'>Mapbox</a>. If you have ideas to improve it, <a href="https://github.com/osmlab/osm-qa-tiles/issues">get in touch</a>!</p>
+                <p class='small quiet'><a href="http://www.openstreetmap.org/copyright">© OpenStreetMap contributors</a>, licensed
                 under the <a href='http://opendatacommons.org/licenses/odbl/'>ODbL</a>.</p>
-                <p>This service is provided by <a href='https://mapbox.com/'>Mapbox</a>. If you have ideas to improve it, <a href="https://github.com/osmlab/osm-qa-tiles/issues">get in touch</a>!</p>
-                <p class="small">OSM QA tiles are created with open source software. Check out <a href="https://github.com/mapbox/minjur">minjur</a> and <a href="https://github.com/mapbox/tippecanoe">tippecanoe</a> to create your own.</p>
+                <p class='small quiet'>Created with <a href="https://github.com/mapbox/minjur">minjur</a> and <a href="https://github.com/mapbox/tippecanoe">tippecanoe</a> to create your own.</p>
             </div>
         </div>
         <div id='download' class='col7 center'>
