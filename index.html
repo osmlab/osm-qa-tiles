@@ -60,6 +60,10 @@
         #country {
             pointer-events: auto;
             position: relative;
+            font-size: 20px;
+            font-weight: normal;
+            line-height: 30px;
+            font-family: 'Open Sans Bold', sans-serif;
         }
     </style>
 </head>
@@ -104,7 +108,10 @@
             <a href='https://s3.amazonaws.com/mapbox/osm-qa-tiles/latest.planet.mbtiles.gz' class='button fill-dark'>
             <div class="label">DOWNLOAD PLANET (24.3 GB)</div>
             <div class="description">updated daily</div></a>
-            <h2 id='country'><a href="/osm-qa-tiles/country.html">or country extracts</a></h2>
+            <div id="country">
+                <a href="/osm-qa-tiles/country.html">country extracts </a> |
+                <a href="/osm-qa-tiles/historic.html">historic tilesets</a>
+            </div>
         </div>
     </div>
 
