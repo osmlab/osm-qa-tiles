@@ -17,15 +17,18 @@
 <body>
     <div class="limiter">
 
-        <div class="row2">
+        <div>
           <h2 class="fancy">OSM QA tiles: historic snapshots</h2>
 
-          <p class="space-top4">Historic snapshots represent the map as it was on a specific date. These files do not contain full editing history, but instead represent each map object as it existed at a specic time in history.</p>
+          <p class="space-top2">Historic snapshots represent the map as it was on a specific date. These files do not contain full editing history, but instead represent each map object as it existed at a specic time in history.</p>
 
           <h3>Quarterly Snapshots</h3>
           <p class="space-top1">Generated from the <a target="_blank" class="link" href="//planet.openstreetmap.org/planet/full-history/">full history pbf</a> with the <span class="code">time-filter</span> command of the <a target="_blank" class="link"  href="//osmcode.org/osmium-tool">osmium tool</a>, snapshots of the map as it existed at the end of each quarter are made available below.</p>
 
-          <p class='note'>For annual snapshots, use the fourth quarter of each year. These represent the map on January 01, 00:00.</p>
+          <p class='note space-bottom1'>For annual snapshots, use the fourth quarter of each year. These represent the map on January 01, 00:00.</p>
+        </div>
+
+        <div>
 
           <table class='prose table'>
             <thead>
@@ -41,24 +44,24 @@
             <tbody>
               <tr>
                 <th>2005</th>
-                <td><a href="#">2005/04/01, ##.# MB</a></td>
-                <td><a href="#">2005/07/01, ##.# MB</a></td>
-                <td><a href="#">2005/10/01, ##.# MB</a></td>
-                <td><a href="#">2006/01/01, ##.# MB</a></td>
+                <td> </a></td>
+                <td><a href="#">2005/07/01, 108 KB</a></td>
+                <td><a href="#">2005/10/01, 271 KB</a></td>
+                <td><a href="#">2006/01/01, 673 KB</a></td>
               </tr>
               <tr>
                 <th>2006</th>
-                <td><a href="#">2006/04/01, ##.# MB</a></td>
-                <td><a href="#">2006/07/01, ##.# MB</a></td>
-                <td><a href="#">2006/10/01, ##.# MB</a></td>
-                <td><a href="#">2007/01/01, ##.# MB</a></td>
+                <td><a href="#">2006/04/01, 2.6 MB</a></td>
+                <td><a href="#">2006/07/01, 6.4 MB</a></td>
+                <td><a href="#">2006/10/01, 21 MB</a></td>
+                <td><a href="#">2007/01/01, 58 MB</a></td>
               </tr>
               <tr>
                 <th>2007</th>
-                <td><a href="#">2007/04/01, ##.# GB</a></td>
-                <td><a href="#">2007/07/01, ##.# GB</a></td>
-                <td><a href="#">2007/10/01, ##.# GB</a></td>
-                <td><a href="#">2008/01/01, ##.# GB</a></td>
+                <td><a href="#">2007/04/01, 117 MB</a></td>
+                <td><a href="#">2007/07/01, 217 MB</a></td>
+                <td><a href="#">2007/10/01, 954 MB</a></td>
+                <td><a href="#">2008/01/01, 4.1 GB</a></td>
               </tr>
               <tr>
                 <th>2008</th>
@@ -128,10 +131,41 @@
                 <td><a href="#">2017/04/01, ##.# GB</a></td>
                 <td><a href="#">2017/07/01, ##.# GB</a></td>
                 <td><a href="#">2017/10/01, ##.# GB</a></td>
-                <td><a href="#"></a>2018/01/01, ? GB</td>
+                <td><a href="#"></a>2018/01/01 TBD</td>
               </tr>
             </tbody>
           </table>
+        </div>
+
+        <div>
+
+          <h3 class=space-top4>How were these generated?</h3>
+          <p class="space-top1">First, the data is extracted from the full planet history: </p>
+          <p class="space-left2 code">osmium time-filter --verbose --overwrite -o 2010-Q1.osm.pbf planet-history.osm.pbf 2010-04-01T00:00:00Z</p>
+
+          <p class="space-top1">Next, the pbf file was turned into geojson with minjur. Note: minjur was incorporated into the osmium tool as <span class="code">export</p>
+
+          <p class="space-left2 code">minjur --polygons --zoom=12 --nodes=dense 2010-Q1.osm.pbf</p>
+
+          <p class="space-top1">Finally, the output of the above command was piped into tippecanoe:
+
+            <p class="space-left2 code">| tippecanoe -f -pf -pk -ps -Z12 -z12 -d20 --no-tile-stats -b0 -l osm -n 2010-Q1 -o 2010-Q1-qa-tile.mbtiles</p>
+
+          <p class="space-top1"> The flags ensure the following <a target="_blank" href="//github.com/mapbox/tippecanoe">(from the tippecanoe documentation):</a> </p>
+
+            <p class="space-left2"><span style="float:left; width:175px;" class="code">-Z12 -z12 -d20</span> Only generate zoom 12, with the maximum detail available at that resolution.</p>
+
+            <p class="space-left2"><span style="float:left; width:175px;" class="code">-pf -pk -ps</span> Don't limit tiles by size or feature count; don't simplify lines.</p>
+
+            <p class="space-left2"><span style="float:left; width:175px;" class="code">-b0</span> No buffer on the tile edges from which to duplicate next-door features.</p>
+
+            <p class="space-left2"><span style="float:left; width:175px;" class="code">--no-tile-stats</span>Don't generate statistics for object attributes. (Saves time and memory).</p>
+
+            <p class="space-left2"><span style="float:left; width:175px;" class="code">-l osm -n 2010-Q1</span>Name the layer "osm" and the tileset "2010-Q1".</p>
+
+
+          <br><br><br><hr><br>
+
         </div>
     </div>
 
