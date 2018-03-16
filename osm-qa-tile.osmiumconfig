@@ -1,0 +1,16 @@
+{
+    "attributes": {
+        "type":      true,
+        "id":        true,
+        "version":   true,
+        "changeset": true,
+        "timestamp": true,
+        "uid":       true,
+        "user":      true,
+        "way_nodes": true
+    },
+    "linear_tags":  [],
+    "area_tags":    ["building!=no",],
+    "exclude_tags": [],
+    "include_tags": []
+}
