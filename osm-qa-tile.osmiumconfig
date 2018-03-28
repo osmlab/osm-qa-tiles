@@ -7,10 +7,14 @@
         "timestamp": true,
         "uid":       true,
         "user":      true,
-        "way_nodes": true
+        "way_nodes": false
     },
-    "linear_tags":  [],
-    "area_tags":    ["building!=no",],
-    "exclude_tags": [],
+
+    "linear_tags":  ["highway", "barrier", "natural=coastline"],
+    
+    "area_tags":    ["aeroway", "amenity", "building!=no", "landuse", "leisure", "man_made", "natural!=coastline"],
+    
+    "exclude_tags": ["created_by", "source", "source:*"],
+    
     "include_tags": []
 }
