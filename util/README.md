@@ -34,4 +34,4 @@ tippecanoe -Pf -Z8 -z12 -o tiles2.mbtiles \
 
 Using something like [`mbview`](//github.com/mapbox/mbview), you can see the difference:
 
-![comparison-new-v-old.png]
+![Comparison Image from mbview](comparison-new-v-old.png)
