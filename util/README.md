@@ -2,7 +2,13 @@
 
 
 ![Compare Map](compare-style.png)
-Features only in osmium-export are in green, features only from minjur are red.
+
+Features only in osmium-export are in green, features only from minjur are red. The green boxes are created by the 1px stroke at the tile boundaries on administrative features (relations) Polygons that cover all of the tiles.
+
+TODO: 
+Are these administrative features in ALL tiles? Does `--no-duplication` in tippecanoe take care of that? 
+
+Generally, this comparison looks really good. The _extra_ red lines are various `ways` that are part of relations. `osmium-export` does not produce these as individual line strings but instead as the more realistic polygon feature that represents the original relation.
 
 ### [View this map](https://api.mapbox.com/styles/v1/jenningsanderson/cjfuef4kt0evh2rqhdyny5rau.html?fresh=true&title=true&access_token=pk.eyJ1IjoiamVubmluZ3NhbmRlcnNvbiIsImEiOiIzMHZndnpvIn0.PS-j7fRK3HGU7IE8rbLT9A#8.1/40.891/-73.833)
 
@@ -39,4 +45,4 @@ tippecanoe -Pf -Z8 -z12 -o tiles2.mbtiles \
 
 Using something like [`mbview`](//github.com/mapbox/mbview), you can see the difference:
 
-![comparison-new-v-old.png]
+![Comparison View with Details](comparison-new-v-old.png)
