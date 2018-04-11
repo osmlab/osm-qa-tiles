@@ -4,7 +4,7 @@
 ## Usage
 First, create `tmp.mbtiles` with osmium export, using the osmium config in the parent directory:
 
-(In this case, new_york.osm.pbf was cut from the same planet-latest.osm.pbf that the latest osm-qa-tiles was built from).
+In this case, `new_york.osm.pbf` was cut from the same `planet-latest.osm.pbf` that the latest osm-qa-tiles file was built from:
 
 ```
 osmium export -r /data/planet/new_york.osm.pbf \
@@ -13,7 +13,7 @@ osmium export -r /data/planet/new_york.osm.pbf \
 		--no-tile-stats -o tmp.mbtiles -f -ps -pf -pk -b0 -d20 -l osm
 ```
 
-Install the dependencies (tile-reduce) and then run tile-reduce
+Install the dependencies (tile-reduce) and then run tile-reduce:
 
 ```
 npm install
@@ -32,6 +32,6 @@ tippecanoe -Pf -Z8 -z12 -o tiles2.mbtiles \
 	--named-layer=newOnly:missing-in-old.geojsonl
 ```
 
-Using something like `mbview`, you can see the difference: 
+Using something like [`mbview`](//github.com/mapbox/mbview), you can see the difference:
 
-![comparison-new-v-old.jpng]
+![comparison-new-v-old.png]
