@@ -1,6 +1,11 @@
 # Comparing `minjur` and `osmium export`
 
 
+![Compare Map](compare-style.png)
+Features only in osmium-export are in green, features only from minjur are red.
+
+### [View this map](https://api.mapbox.com/styles/v1/jenningsanderson/cjfuef4kt0evh2rqhdyny5rau.html?fresh=true&title=true&access_token=pk.eyJ1IjoiamVubmluZ3NhbmRlcnNvbiIsImEiOiIzMHZndnpvIn0.PS-j7fRK3HGU7IE8rbLT9A#8.1/40.891/-73.833)
+
 ## Usage
 First, create `tmp.mbtiles` with osmium export, using the osmium config in the parent directory:
 
@@ -34,4 +39,4 @@ tippecanoe -Pf -Z8 -z12 -o tiles2.mbtiles \
 
 Using something like [`mbview`](//github.com/mapbox/mbview), you can see the difference:
 
-![Comparison Image from mbview](comparison-new-v-old.png)
+![comparison-new-v-old.png]
