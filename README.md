@@ -26,8 +26,7 @@ git clone --depth 1 --branch v0.18.0 https://github.com/mapbox/mason.git .mason
 ./mason_packages/.link/bin/osmium export  \
   -c osm-qa-tile.osmiumconfig --overwrite \
   -f geojsonseq -r -o features.geojsonseq \
-  --verbose --progress
-  <OSM FILE>
+  --verbose --progress <OSM FILE>
 ```
 
 _Explanation_
@@ -36,7 +35,7 @@ _Explanation_
  - `-r -f geojsonseq`: Write features as line delimited geojson features. Don't use the record separtor.
 
 
-### 4. Use [`tippecanoe`](//github.com/mapbox/tippecanoe) to tile the features
+#### 4. Use [`tippecanoe`](//github.com/mapbox/tippecanoe) to tile the features
 
 ```
 ./mason_packages/.link/bin/tippecanoe -Pf -Z12 -z12 -d20 \
