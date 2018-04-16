@@ -3,14 +3,14 @@ OSM vector tiles for tile-reduce jobs
 
 
 ## Install Dependencies
-1. First, install [Mason](//github.com/mapbox/mason) to manage dependencies:
+#### 1. First, install [Mason](//github.com/mapbox/mason) to manage dependencies:
 
 ```
 git clone --depth 1 --branch v0.18.0 https://github.com/mapbox/mason.git .mason
 ```
 
 
-2. Install [`osmium-tool`](//osmcode.org/osmium-tool/) and [`tippecanoe`](//github.com/mapbox/tippecanoe) with Mason
+#### 2. Install [`osmium-tool`](//osmcode.org/osmium-tool/) and [`tippecanoe`](//github.com/mapbox/tippecanoe) with Mason
 
 ```
 .mason/mason install osmium-tool 1.7.1
@@ -21,13 +21,13 @@ git clone --depth 1 --branch v0.18.0 https://github.com/mapbox/mason.git .mason
 ```
 
 ## Running
-1. Obtain an OSM file
+#### 1. Obtain an OSM file
 
 ```
 wget latest-planet.osm.pbf
 ```
 
-2. Use [`osmium-export`](//osmcode.org/osmium-tool/) to convert the file to `geojsonseq`
+#### 2. Use [`osmium-export`](//osmcode.org/osmium-tool/) to convert the file to `geojsonseq`
 
 ```
 ./mason_packages/.link/bin/osmium export  \
