@@ -133,4 +133,11 @@ var map = L.mapbox.map('map', 'aaronlidman.b02452c3', {
     zoomControl: false
 }).setView([37.772292151125505, -122.40674436092377], 17);
 </script>
+<script type="text/javascript">
+fetch('https://s3.amazonaws.com/mapbox/osm-qa-tiles-production/latest.planet.mbtiles.gz', { method: 'HEAD' })
+.then(r => r.headers.get('Last-Modified'))
+.then(lmh => new Date(lmh)).then(lm =>
+  document.querySelector('#download .description').setAttribute('title', 'last modified: ' + lm.toUTCString())
+);
+</script>
 </html>
