@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@mapbox/tile-reduce": "^3.2.0"
+    "@mapbox/tile-reduce": "^3.2.0",
+    "lodash": "^4.17.11"
   }
 }

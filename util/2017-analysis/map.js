@@ -47,7 +47,7 @@ module.exports = function(data, tile, writeData, done) {
   var missingInOld = [];
 
   //Extract the osm layer from the mbtile
-  var currentTiles = data.quarterly.osm;
+  var currentTiles = data.current.osm;
   var newTiles     = data.new.osm;
 
   var currIDs = new Set( currentTiles.features.map(function(f){

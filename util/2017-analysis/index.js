@@ -1,16 +1,5 @@
 'use strict';
 
-var tileReduce = require("@mapbox/tile-reduce")
-var fs = require('fs')
-var path = require('path');
-
-var missingInOld = fs.createWriteStream('missing-in-old.geojsonl');
-var missingInNew = fs.createWriteStream('missing-in-new.geojsonl');
-
-var sameCount = 0;
-var oldBigger = 0;
-var newBigger = 0;
-
 var bounds = {
       "type": "Feature",
       "properties": {},
@@ -43,14 +32,59 @@ var bounds = {
       }
     }
 
+bounds = {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -74.7509765625,
+              40.46784549077255
+            ],
+            [
+              -73.2623291015625,
+              40.46784549077255
+            ],
+            [
+              -73.2623291015625,
+              41.15797827873605
+            ],
+            [
+              -74.7509765625,
+              41.15797827873605
+            ],
+            [
+              -74.7509765625,
+              40.46784549077255
+            ]
+          ]
+        ]
+      }
+    }
+var tileReduce = require("@mapbox/tile-reduce")
+var fs = require('fs')
+var path = require('path');
+
+// var output = fs.createWriteStream('/data/data-team-features.geojsonl')
+// var changesets_out = fs.createWriteStream("/data/data-team-changeset_ids.txt")
+
+var missingInOld = fs.createWriteStream('missing-in-old.geojsonl');
+var missingInNew = fs.createWriteStream('missing-in-new.geojsonl');
+
+var sameCount = 0;
+var oldBigger = 0;
+var newBigger = 0;
+
 tileReduce({
     map: path.join(__dirname, '/map.js'),
     sources: [
         {name: 'new',
-         mbtiles: "../../latest.planet.mbtiles",
+         mbtiles: 'tmp.mbtiles',
          raw: false},
-        {name: 'quarterly', 
-         mbtiles: "../../2018-Q3-qa-tiles.mbtiles",
+        {name: 'current', 
+         mbtiles: path.join("/data/planet/latest.planet.mbtiles"),
          raw: false}
     ],
     output: fs.createWriteStream('tmp.log'),
@@ -80,7 +114,7 @@ tileReduce({
 })
 .on('end', function() {
     console.error("\nTiles that matched: " + sameCount);
-    console.error("2018-Q3 QA bigger:  " + oldBigger);
-    console.error("Latest QA Tile bigger: " + newBigger);
+    console.error("Current QA bigger:  " + oldBigger);
+    console.error("NEW QA Tile bigger: " + newBigger);
     console.error("DONE")
 });
