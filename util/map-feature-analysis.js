@@ -60,7 +60,7 @@ module.exports = function(data, tile, writeData, done) {
       "node"     : 0
   }
     
-  newTiles.features.forEach(function(feat){
+  currentTiles.features.forEach(function(feat){
   
   if ( feat.properties['@id'] == 240635 ){
       

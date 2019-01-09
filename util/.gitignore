@@ -1,3 +1,4 @@
 *.mbtiles
 *.geojsonl
 node_modules/
+package-lock.json
