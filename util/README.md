@@ -42,5 +42,5 @@ Total duplicated features:
 	}
 	
 	
-####Looking forward: 
+#### Looking forward: 
 What are the specific uses of osm-qa-tiles? Specifically, if it's buildings, roads, POIs, then we should probably be generating distinct tilesets with just these features?
