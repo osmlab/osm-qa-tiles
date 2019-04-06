@@ -1,54 +1,32 @@
 'use strict';
-Set.prototype.isSuperset = function(subset) {
-    for (var elem of subset) {
-        if (!this.has(elem)) {
-            return false;
-        }
-    }
-    return true;
+
+var tilebelt = require('tilebelt');
+
+function tileToCenterPoint(tile) {
+    var bbox = tilebelt.tileToBBOX([tile[0]+.5, tile[1]+.5, tile[2]]);
+
+    return {type: 'Point',
+        coordinates: [
+            bbox[0],
+            bbox[3]
+        ]
+    };
 }
 
-Set.prototype.union = function(setB) {
-    var union = new Set(this);
-    for (var elem of setB) {
-        union.add(elem);
-    }
-    return union;
-}
-
-Set.prototype.intersection = function(setB) {
-    var intersection = new Set();
-    for (var elem of setB) {
-        if (this.has(elem)) {
-            intersection.add(elem);
-        }
-    }
-    return intersection;
-}
-
-Set.prototype.difference = function(setB) {
-    var difference = new Set(this);
-    for (var elem of setB) {
-        difference.delete(elem);
-    }
-    return difference;
-}
-
-
-var _ = require("lodash")
+var tilebelt = require('tilebelt');
 
 module.exports = function(data, tile, writeData, done) {
     
-  var curFeatures = {}
+//   var curFeatures = {}
   var newFeatures = {}
   
-  var missingInNew = [];
-  var missingInOld = [];
+//   var missingInNew = [];
+//   var missingInOld = [];
     
   var features = {}
 
   //Extract the osm layer from the mbtile
-  var currentTiles = data.quarterly.osm;
+//   var currentTiles = data.quarterly.osm;
   var newTiles     = data.new.osm;
 
 //   var currIDs = new Set( currentTiles.features.map(function(f){
@@ -59,12 +37,12 @@ module.exports = function(data, tile, writeData, done) {
       "way"      : 0,
       "node"     : 0
   }
-    
-  currentTiles.features.forEach(function(feat){
+  var writeMe = false
+  newTiles.features.forEach(function(feat){
   
-  if ( feat.properties['@id'] == 240635 ){
+//   if ( feat.properties['@id'] == 240635 ){
       
-      writeData(JSON.stringify(feat)+"\n")
+//       writeData(JSON.stringify(feat)+"\n")
       
         if (!features.hasOwnProperty(feat.properties['@type']+feat.properties['@id']) ){
 
@@ -73,15 +51,16 @@ module.exports = function(data, tile, writeData, done) {
         }else{
 
             types[feat.properties['@type']]++;
+            writeMe = true
 
-            console.warn( tile + ": "+ JSON.stringify(features[feat.properties['@type']+feat.properties['@id']].properties) + " | " + JSON.stringify(feat.properties) + "\n")
+//             console.warn( tile + ": "+ JSON.stringify(features[feat.properties['@type']+feat.properties['@id']].properties) + " | " + JSON.stringify(feat.properties) + "\n")
             
 //             writeData(JSON.stringify(feat)+"\n")
         }
-  }
-  if ( feat.properties['@id'] == 40720629 ){
-    console.warn(JSON.stringify(feat)+"\n")
-  }
+//   }
+//   if ( feat.properties['@id'] == 40720629 ){
+//     console.warn(JSON.stringify(feat)+"\n")
+//   }
         
   });
 
@@ -124,6 +103,15 @@ module.exports = function(data, tile, writeData, done) {
 //   }
     
 //   writeData(currentTiles.features.length + " " + newTiles.features.length + "\n");
+    
+//     var center = tilebelt.tileToBBox(tile)
+    if ( writeMe) {
+        writeData(JSON.stringify({
+            type: "Feature",
+            properties: types,
+            geometry: tileToCenterPoint(tile)
+        })+"\n")
+    }
   
   done(null, types); // {same: same, bigger: bigger, missingInNew: missingInNew, missingInOld: missingInOld});
 };

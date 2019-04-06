@@ -56,12 +56,12 @@ tileReduce({
         {name: 'new',
          mbtiles: "../../latest.planet.mbtiles",
          raw: false},
-        {name: 'quarterly', 
-         mbtiles: "../../2018-Q3-qa-tiles.mbtiles",
-         raw: false}
+//         {name: 'quarterly', 
+//          mbtiles: "../../2018-Q3-qa-tiles.mbtiles",
+//          raw: false}
     ],
-    output: fs.createWriteStream('tmp2.log'),
-    geojson: bounds,
+    output: fs.createWriteStream('dupFeatureIDcountsNoZero.geojsonseq'),
+//     geojson: bounds,
     zoom: 12,
 })
 .on('reduce', function(res) {
