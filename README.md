@@ -1,23 +1,22 @@
 # osm-qa-tiles
 Creating OSM vector tiles for tile-reduce jobs
 
-
 ## Creating OSM QA Tiles
 
 #### 1. First, install [Mason](//github.com/mapbox/mason) to manage dependencies:
 
 ```
-git clone --depth 1 --branch v0.18.0 https://github.com/mapbox/mason.git .mason
+curl -sSfL https://github.com/mapbox/mason/archive/v0.20.0.tar.gz | tar -z --extract --strip-components=1 --exclude="*md" --exclude="test*" --directory=/tmp
 ```
 
 #### 2. Install [`osmium-tool`](//osmcode.org/osmium-tool/) and [`tippecanoe`](//github.com/mapbox/tippecanoe) with Mason
 
 ```
-.mason/mason install osmium-tool 1.7.1
-.mason/mason link osmium-tool 1.7.1
+/tmp/mason install osmium-tool 1.11.0
+/tmp/mason link osmium-tool 1.11.0
 
-.mason/mason install tippecanoe 1.27.6
-.mason/mason link tippecanoe 1.27.6
+/tmp/mason install tippecanoe 1.32.10
+/tmp/mason link tippecanoe 1.32.10
 ```
 
 #### 3. Use [`osmium-export`](//osmcode.org/osmium-tool/) to convert the file to `geojsonseq`
