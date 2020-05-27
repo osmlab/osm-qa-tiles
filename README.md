@@ -1,7 +1,7 @@
 # osm-qa-tiles
-Creating OSM vector tiles for tile-reduce jobs
+Create OSM vector tiles for tile-reduce jobs
 
-## Creating OSM QA Tiles
+## How to Create OSM-QA-Tiles
 
 #### 1. First, install [Mason](//github.com/mapbox/mason) to manage dependencies:
 
