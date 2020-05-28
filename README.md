@@ -6,17 +6,17 @@ Create OSM vector tiles for tile-reduce jobs
 #### 1. First, install [Mason](//github.com/mapbox/mason) to manage dependencies:
 
 ```
-curl -sSfL https://github.com/mapbox/mason/archive/v0.20.0.tar.gz | tar -z --extract --strip-components=1 --exclude="*md" --exclude="test*" --directory=/tmp
+git clone --depth=1 https://github.com/mapbox/mason
 ```
 
 #### 2. Install [`osmium-tool`](//osmcode.org/osmium-tool/) and [`tippecanoe`](//github.com/mapbox/tippecanoe) with Mason
 
 ```
-/tmp/mason install osmium-tool 1.11.0
-/tmp/mason link osmium-tool 1.11.0
+mason/mason install osmium-tool 1.11.0
+mason/mason link osmium-tool 1.11.0
 
-/tmp/mason install tippecanoe 1.32.10
-/tmp/mason link tippecanoe 1.32.10
+mason/mason install tippecanoe 1.32.10
+mason/mason link tippecanoe 1.32.10
 ```
 
 #### 3. Use [`osmium-export`](//osmcode.org/osmium-tool/) to convert the file to `geojsonseq`
