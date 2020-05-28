@@ -1,7 +1,10 @@
 # osm-qa-tiles
-Create OSM vector tiles for tile-reduce jobs
 
-## A guide to creating osm-qa-tiles with osmium and tippecanoe
+Create OSM vector tiles for tile-reduce jobs.
+
+## A guide to creating osm-qa-tiles with osmium and tippecanoe at home
+
+_Note: This is similar to how osm-qa-tiles available at http://osmlab.github.io/osm-qa-tiles are generated but not the exact script nor same versions of tippecanoe / osmium. These instructions are offered to allow folks to generate their own osm-qa-tiles when the primary source falls behind._
 
 #### 1. First, install [Mason](//github.com/mapbox/mason) to easily manage dependencies:
 
