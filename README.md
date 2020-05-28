@@ -2,7 +2,7 @@
 
 Create OSM vector tiles for tile-reduce jobs.
 
-## A guide to creating osm-qa-tiles with osmium and tippecanoe at home
+## A guide to creating osm-qa-tiles with `osmium` and `tippecanoe` at home
 
 _Note: This is similar to how osm-qa-tiles available at http://osmlab.github.io/osm-qa-tiles are generated but not the exact script nor same versions of tippecanoe / osmium. These instructions are offered to allow folks to generate their own osm-qa-tiles when the primary source falls behind._
 
@@ -49,7 +49,7 @@ Or use `json-stream-reduce`, a fork of tile-reduce to run in parallel (expecting
 
 ```bash
 npm install json-stream-reduce
-node filter-parallel.js
+node filter-parallel.js > compact.geojsonseq
 ```
 
 #### 4. Use [`tippecanoe`](//github.com/mapbox/tippecanoe) to tile the features
