@@ -34,9 +34,11 @@
         .button .description {
           font-family: 'Open Sans', sans-serif;
           margin-top: 5px;
-          margin-bottom: -10px;
           }
-
+        .button .updated {
+          margin-top: 5px;
+          margin-bottom: -10px;
+        }
         .thelist {
             margin-left: 40px;
             list-style-type: square;
@@ -102,13 +104,19 @@
         <div id='download' class='col7 center'>
             <a href='https://hot-qa-tiles.s3.amazonaws.com/latest.planet.mbtiles.gz' class='button fill-dark'>
             <div class="label">DOWNLOAD PLANET (~36 GB)</div>
-            <div class="description">updated weekly</div></a>
+            <div class="description">updated weekly</div>
+            <div class="updated"></div></a>
             <div id="country">
                 <a href="/osm-qa-tiles/country.html">country extracts </a> |
                 <a href="/osm-qa-tiles/historic.html">historical tilesets</a>
             </div>
         </div>
     </div>
-
+    <script type="text/javascript">
+      fetch('https://hot-qa-tiles.s3.amazonaws.com/latest.planet.mbtiles.gz', { method: 'HEAD' })
+        .then(r => r.headers.get('Last-Modified'))
+        .then(lmh => new Date(lmh)).then(lm =>
+        document.querySelector('#download .updated').innerHTML = 'last modified: ' + lm.toUTCString());
+    </script>
 </body>
 </html>
