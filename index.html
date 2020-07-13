@@ -3,14 +3,9 @@
 <head>
     <title>OSM QA tiles</title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-    <script src='https://api.mapbox.com/mapbox.js/v2.2.2/mapbox.js'></script>
-    <link href='https://api.mapbox.com/mapbox.js/v2.2.2/mapbox.css' rel='stylesheet' />
-    <style>
-      body { margin:0; padding:0; }
-      #map { position:absolute; top:0; bottom:0; width:100%; }
-    </style>
     <link href='https://www.mapbox.com/base/latest/base.css' rel='stylesheet' />
     <style type="text/css">
+        body { background-image:url("img/bg.png") }
         #copy {
             pointer-events: auto;
             overflow-y: scroll;
@@ -39,9 +34,11 @@
         .button .description {
           font-family: 'Open Sans', sans-serif;
           margin-top: 5px;
-          margin-bottom: -10px;
           }
-
+        .button .updated {
+          margin-top: 5px;
+          margin-bottom: -10px;
+        }
         .thelist {
             margin-left: 40px;
             list-style-type: square;
@@ -66,25 +63,14 @@
             font-family: 'Open Sans Bold', sans-serif;
         }
     </style>
-    <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-        ga('create', 'UA-98656975-1', 'auto');
-        ga('send', 'pageview');
-    </script>
 </head>
 <body>
-    <div id='map'></div>
-
     <div id='holder' class='unlimiter'>
         <div id='copy' class='col5'>
             <div class='pad4'>
                 <h1 class='fancy center space-top2 space-bottom0'>OSM QA tiles</h1>
                 <p class='prose space-bottom4'><a href="http://openstreetmap.org/">OpenStreetMap</a> data as
-                <a href="https://www.mapbox.com/developers/vector-tiles/">Mapbox Vector Tiles</a> in
+                <a href="https://docs.mapbox.com/vector-tiles/reference/">Mapbox Vector Tiles</a> in
                 an <a href="https://github.com/mapbox/mbtiles-spec">MBTiles file</a> for data analysis.</p>
                 <div class='prose-big'>
                     <h4>Includes:</h4>
@@ -108,29 +94,29 @@
             </div>
 
             <div class='pad4 fill-white'>
-                <a href='https://mapbox.com/' class='mb-logo'>Mapbox</a>
-                <p class='prose'>This service is provided by <a href='https://mapbox.com/'>Mapbox</a>. If you have ideas to improve it, <a href="https://github.com/osmlab/osm-qa-tiles/issues">get in touch</a>!</p>
+                <img src="img/hot-logo-icon-nav.svg"/> <a href='https://mapbox.com/' class='mb-logo quiet'>Mapbox</a>
+                <p class='prose'>This service is provided by <a href='https://hotosm.org/'>Humanitarian OpenStreetMap Team</a>, and originally developed by <a href='https://mapbox.com/'>Mapbox</a>. If you have ideas to improve it, <a href="https://github.com/osmlab/osm-qa-tiles/issues">get in touch</a>!</p>
                 <p class='small quiet'><a href="http://www.openstreetmap.org/copyright">© OpenStreetMap contributors</a>, licensed
                 under the <a href='http://opendatacommons.org/licenses/odbl/'>ODbL</a>.</p>
                 <p class='small quiet'>Created with <a href="https://github.com/mapbox/minjur">minjur</a> and <a href="https://github.com/mapbox/tippecanoe">tippecanoe</a>.</p>
             </div>
         </div>
         <div id='download' class='col7 center'>
-            <a href='https://s3.amazonaws.com/mapbox/osm-qa-tiles-production/latest.planet.mbtiles.gz' class='button fill-dark'>
-            <div class="label">DOWNLOAD PLANET (24.3 GB)</div>
-            <div class="description">updated daily</div></a>
+            <a href='https://hot-qa-tiles.s3.amazonaws.com/latest.planet.mbtiles.gz' class='button fill-dark'>
+            <div class="label">DOWNLOAD PLANET (~36 GB)</div>
+            <div class="description">updated weekly</div>
+            <div class="updated"></div></a>
             <div id="country">
                 <a href="/osm-qa-tiles/country.html">country extracts </a> |
                 <a href="/osm-qa-tiles/historic.html">historical tilesets</a>
             </div>
         </div>
     </div>
-
+    <script type="text/javascript">
+      fetch('https://hot-qa-tiles.s3.amazonaws.com/latest.planet.mbtiles.gz', { method: 'HEAD' })
+        .then(r => r.headers.get('Last-Modified'))
+        .then(lmh => new Date(lmh)).then(lm =>
+        document.querySelector('#download .updated').innerHTML = 'last modified: ' + lm.toUTCString());
+    </script>
 </body>
-<script type="text/javascript">
-L.mapbox.accessToken = 'pk.eyJ1IjoiYWFyb25saWRtYW4iLCJhIjoiNTVucTd0TSJ9.wVh5WkYXWJSBgwnScLupiQ';
-var map = L.mapbox.map('map', 'aaronlidman.b02452c3', {
-    zoomControl: false
-}).setView([37.772292151125505, -122.40674436092377], 17);
-</script>
 </html>
