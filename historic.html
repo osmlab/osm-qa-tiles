@@ -20,22 +20,37 @@
         <div>
           <h2 class="fancy">OSM QA tiles: historic snapshots</h2>
 
-          <p class="space-top2">Historic snapshots represent the map as it was on a specific date. These files do not contain the full editing history, but instead represent each map object as it existed at a specic time in history.</p>
+          <p class="space-top1 link">< <a href="/osm-qa-tiles/">Back</a></p>
 
-          <h3>Quarterly Snapshots</h3>
-          <nav class='space-top1'>
+          <p class="space-top2">Historic snapshots contain OSM data as it was on a specific date in the osm-qa-tile format. </p>
+          <p>They are powerful datasets for comparing what OSM looked like at different points in time:</p>
+          <div class='align-center'>
+            <img height="200" src="img/london_07.jpg">
+            <img height="200" src="img/london_19.jpg">
+          </div>
+          <p class='space-top1'><em>OSM features present in London in 2007 compared to 2019.</em></p>
+
+          <h3 class="space-top2">Quarterly Snapshots</h3>
+          <p class='space-top-1'>
+            Previous research has used historic snapshots taken quarterly (April 1, July 1, October 1, and January 1 of each year). to show changes in object density over time. For example, <a href="https://mapbox.github.io/osm-analysis-dashboard/#lat=40.656&lon=-73.965&zoom=11.707&startYear=2013-Q3&endYear=2013-Q4&filterProperty=buildingCount_normAggArea">this comparison of the OSM building density in New York between Q3 and Q4 of 2013. </a>
+          </p>
+          
+          <!-- <nav class='space-top1'>
             <div class='inline-block pill space-top1'>
               <a href='#' class='button'>Quarterly Snapshots</a>
               <a href='#instructions' class='button stroke'>How were these tiles generated?</a>
               <a href='#previous_generation' class='button stroke'>Previous Generation Annual Snapshots</a>
             </div>
-          </nav>
-          <p class="space-top1">Generated from the <a target="_blank" class="link" href="//planet.openstreetmap.org/planet/full-history/">full history pbf</a> with the <span class="code">time-filter</span> command of the <a target="_blank" class="link"  href="//osmcode.org/osmium-tool">osmium tool</a>, snapshots of the map as it existed at the end of each quarter are made available below.</p>
+          </nav> -->
+          
+          <!-- <p class="space-top1">These tilesets were generated from the <a target="_blank" class="link" href="//planet.openstreetmap.org/planet/full-history/">full history pbf</a> using <a target="_blank" class="link"  href="//osmcode.org/osmium-tool">osmium's</a>  <span class="code">time-filter</span> command.</p> -->
 
-          <p class='note space-bottom1'>For <strong>annual snapshots</strong>, use the fourth quarter of each year. These represent the map on December 31 at 23:59.</p>
+          <p>Historic quarterly snapshots are available for part of 2017 and 2018, but were no longer generated past 2019/01/01. Instead, see the instructions below to generate your own from the full planet history. These files are made available by the University of Colorado Boulder.</p>
+
+          <!-- <p class='note space-bottom1'>For <strong>annual snapshots</strong>, use the fourth quarter of each year. These represent the map on December 31 at 23:59.</p> -->
         </div>
 
-        <div>
+        <div class='space-top1'>
 
           <table class='prose table'>
             <thead>
@@ -49,7 +64,7 @@
             </thead>
 
             <tbody>
-              <tr>
+              <!-- tr>
                 <th>2005</th>
                 <td> </a></td>
                 <td><a href="https://s3.amazonaws.com/mapbox/osm-qa-tiles/historic/2005-Q2-qa-tiles.mbtiles">2005/07/01, 108 KB</a></td>
@@ -132,13 +147,20 @@
                 <td><a href="https://s3.amazonaws.com/mapbox/osm-qa-tiles/historic/2016-Q2-qa-tiles.mbtiles">2016/07/01, 26.2 GB</a></td>
                 <td><a href="https://s3.amazonaws.com/mapbox/osm-qa-tiles/historic/2016-Q3-qa-tiles.mbtiles">2016/10/01, 27.0 GB</a></td>
                 <td><a href="https://s3.amazonaws.com/mapbox/osm-qa-tiles/historic/2016-Q4-qa-tiles.mbtiles">2017/01/01, 27.8 GB</a></td>
-              </tr>
+              </tr> -->
               <tr>
                 <th>2017</th>
-                <td><a href="https://s3.amazonaws.com/mapbox/osm-qa-tiles/historic/2017-Q1-qa-tiles.mbtiles">2017/04/01, 28.8 GB</a></td>
-                <td><a href="https://s3.amazonaws.com/mapbox/osm-qa-tiles/historic/2017-Q2-qa-tiles.mbtiles">2017/07/01, 29.7 GB</a></td>
+                <td><!-- <a href="https://s3.amazonaws.com/mapbox/osm-qa-tiles/historic/2017-Q1-qa-tiles.mbtiles">2017/04/01, 28.8 GB</a> --></td>
+                <td><!-- <a href="https://s3.amazonaws.com/mapbox/osm-qa-tiles/historic/2017-Q2-qa-tiles.mbtiles">2017/07/01, 29.7 GB</a> --></td>
                 <td><a href="https://s3-us-west-1.amazonaws.com/openstreetmap-analysis/osm-qa-tiles/2017-Q3-qa-tile.mbtiles">2017/10/01, 30.4 GB</a></td>
                 <td><a href="https://s3-us-west-1.amazonaws.com/openstreetmap-analysis/osm-qa-tiles/2017-Q4-qa-tiles.mbtiles">2018/01/01 31.7 GB</a></td>
+              </tr>
+              <tr>
+                <th>2018</th>
+                <td><a href="https://s3.amazonaws.com/mapbox/osm-qa-tiles/historic/2018-Q1-qa-tiles.mbtiles">2018/04/01, 30.0 GB</a></td>
+                <td><a href="https://s3.amazonaws.com/mapbox/osm-qa-tiles/historic/2018-Q2-qa-tiles.mbtiles">2018/07/01, 30.1 GB</a></td>
+                <td><a href="https://s3-us-west-1.amazonaws.com/openstreetmap-analysis/osm-qa-tiles/2018-Q3-qa-tile.mbtiles">2018/10/01, 32.1 GB</a></td>
+                <td><a href="https://s3-us-west-1.amazonaws.com/openstreetmap-analysis/osm-qa-tiles/2018-Q4-qa-tiles.mbtiles">2019/01/01 33.2 GB</a></td>
               </tr>
             </tbody>
           </table>
@@ -146,24 +168,25 @@
 
         <div>
 
-          <h3 id="instructions" class=space-top4>How were these generated?</h3>
-          <nav class='space-top1'>
+          <h3 id="instructions" class='space-top4'>How to generate historic snapshots of OSM data:</h3>
+          <!-- <nav class='space-top1'>
             <div class='inline-block pill space-top1'>
               <a href='#' class='button stroke'>Quarterly Snapshots</a>
               <a href='#instructions' class='button'>How were these tiles generated?</a>
               <a href='#previous_generation' class='button stroke'>Previous Generation Annual Snapshots</a>
             </div>
-          </nav>
-          <p class="space-top1">First, the data is extracted from the full planet history: </p>
+          </nav> -->
+          <p class="space-top1">First, create a snapshot of OSM at a specific time from the <a href="https://wiki.openstreetmap.org/wiki/Planet.osm/full">full planet history</a> using the <a href="https://osmcode.org/osmium-tool/">osmium tool</a>
+          </p>
           <p class="space-left2 code">osmium time-filter --verbose --overwrite -o 2010-Q1.osm.pbf planet-history.osm.pbf 2010-04-01T00:00:00Z</p>
 
-          <p class="space-top1">Next, the pbf file was turned into geojson with minjur. Note: minjur was incorporated into the osmium tool as <span class="code">export</p>
+          <p class="space-top1">Next, use osmium-export to convert the <span class='code'>osm.pbf</span> into GeoJSON. Use the <a style="text-transform: none;" href="https://raw.githubusercontent.com/osmlab/osm-qa-tiles/osmium/osm-qa-tile.osmiumconfig">osm-qa-tile.osmiumconfig</a> to ensure that the features match the osm-qa-tiles. 
 
-          <p class="space-left2 code">minjur --polygons --zoom=12 --nodes=dense 2010-Q1.osm.pbf</p>
+          <p class="space-left2 code">osmium export -c <a style="text-transform: none;" href="https://raw.githubusercontent.com/osmlab/osm-qa-tiles/osmium/osm-qa-tile.osmiumconfig">osm-qa-tile.osmiumconfig</a> -f geojsonseq -o features.geojsonseq --progress 2010-Q1.osm.pbf</p>
 
-          <p class="space-top1">Finally, the output of the above command was piped into tippecanoe:
+          <p class="space-top1">Finally, use tippecanoe to create the mbtiles file:
 
-            <p class="space-left2 code">| tippecanoe -f -pf -pk -ps -Z12 -z12 -d20 --no-tile-stats -b0 -l osm -n 2010-Q1 -o 2010-Q1-qa-tile.mbtiles</p>
+            <p class="space-left2 code">tippecanoe -Pf -pf -pk -ps -Z12 -z12 -d20 --no-tile-stats -b0 -l osm -o 2010-Q1-qa-tile.mbtiles features.geojsonseq</p>
 
           <p class="space-top1"> The flags ensure the following <a target="_blank" href="//github.com/mapbox/tippecanoe">(from the tippecanoe documentation):</a> </p>
 
@@ -173,16 +196,18 @@
 
             <p class="space-left2"><span style="float:left; width:175px;" class="code">-b0</span> No buffer on the tile edges from which to duplicate next-door features.</p>
 
-            <p class="space-left2"><span style="float:left; width:175px;" class="code">--no-tile-stats</span>Don't generate statistics for object attributes. (Saves time and memory).</p>
+            <p class="space-left2"><span style="float:left; width:175px;" class="code">--no-tile-stats</span>Don't generate statistics for object attributes (since these are not for rendering).</p>
 
-            <p class="space-left2"><span style="float:left; width:175px;" class="code">-l osm -n 2010-Q1</span>Name the layer "osm" and the tileset "2010-Q1".</p>
+            <p class="space-left2"><span style="float:left; width:175px;" class="code">-l osm</span>Name the layer "osm".</p>
 
           <hr><br>
 
         </div>
-        <div>
 
-          <h3 id="previous_generation" class=space-top4>Previous Generation Annual Snapshots</h3>
+        <!-- <div> -->
+
+
+        <!-- <h3 id="previous_generation" class=space-top4>Previous Generation Annual Snapshots</h3>
           <nav class='space-top1'>
             <div class='inline-block pill space-top1'>
               <a href='#' class='button stroke'>Quarterly Snapshots</a>
@@ -212,11 +237,8 @@
             <div class='pad1y pad2x keyline-bottom'><a href="https://s3.amazonaws.com/mapbox/osm-qa-tiles/historic/planet-20140101.mbtiles">2014/01/01, 53 GB</a></div>
             <div class='pad1y pad2x keyline-bottom'><a href="https://s3.amazonaws.com/mapbox/osm-qa-tiles/historic/planet-20150101.mbtiles">2015/01/01, 52.6 GB</a></div>
             <div class='pad1y pad2x keyline-bottom'><a href="https://s3.amazonaws.com/mapbox/osm-qa-tiles/historic/planet-20160101.mbtiles">2016/01/01, 58 GB</a></div>
-        </div>
+        </div> -->
 
-
-
-          <br><br><br><hr><br>
 
         </div>
 
