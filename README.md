@@ -57,7 +57,7 @@ node filter-parallel.js > compact.geojsonseq
 ```
 ./mason_packages/.link/bin/tippecanoe -Pf -Z12 -z12 -d20 \
 	-b0 -pf -pk -ps --no-tile-stats \
-	--no-duplication -l osm -o osm-qa-tiles.mbtiles \
+	-l osm -o osm-qa-tiles.mbtiles \
 	features.geojsonseq 
 ```
 
