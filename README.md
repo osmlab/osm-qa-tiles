@@ -71,7 +71,7 @@ Flags:
  
 Optional flags to consider:
  
- - `--no-duplication`: Do not duplicate features; less helpful for geometry validation, but helpful if using osm-qa-tiles to count features, users, etc. _Warning: Per this [issue](https://github.com/mapbox/tippecanoe/issues/833), `--no-duplication` will not work at d20 because some features are too large, throwing a geometry error. Could try using tippecanoe <=1.32.9, but corrupt geometries will exist in output.
+ - `--no-duplication`: Do not duplicate features; less helpful for geometry validation, but helpful if using osm-qa-tiles to count features, users, etc. _Warning: Per this [issue](https://github.com/mapbox/tippecanoe/issues/833), `--no-duplication` will not work at d20 because some features are too large, throwing a geometry error. Could try using tippecanoe <=1.32.9, but corrupt geometries will exist in output._
  
  
 #### 5. Consider adding point-representations for turn restrictions with [qa-tiles-plus](//github.com/jenningsanderson/qa-tiles-plus)
