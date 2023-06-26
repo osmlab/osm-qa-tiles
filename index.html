@@ -102,7 +102,7 @@
             </div>
         </div>
         <div id='download' class='col7 center'>
-            <a href='https://hot-qa-tiles.s3.amazonaws.com/latest.planet.mbtiles.gz' class='button fill-dark'>
+            <a href='https://hot-qa-tiles-us-east-1.s3.amazonaws.com/latest.planet.mbtiles.gz' class='button fill-dark'>
             <div class="label">DOWNLOAD PLANET (~36 GB)</div>
             <div class="description">updated weekly</div>
             <div class="updated"></div></a>
@@ -113,7 +113,7 @@
         </div>
     </div>
     <script type="text/javascript">
-      fetch('https://hot-qa-tiles.s3.amazonaws.com/latest.planet.mbtiles.gz', { method: 'HEAD' })
+      fetch('https://hot-qa-tiles-us-east-1.s3.amazonaws.com/latest.planet.mbtiles.gz', { method: 'HEAD' })
         .then(r => r.headers.get('Last-Modified'))
         .then(lmh => new Date(lmh)).then(lm =>
         document.querySelector('#download .updated').innerHTML = 'last modified: ' + lm.toUTCString());
